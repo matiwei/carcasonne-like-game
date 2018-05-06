@@ -1,6 +1,6 @@
 #include "Group.h"
 #include "Hub.h"
-
+#include <iostream>
 namespace uWS {
 
 template <bool isServer>
@@ -16,7 +16,6 @@ void *Group<isServer>::getUserData() {
 template <bool isServer>
 void Group<isServer>::timerCallback(uS::Timer *timer) {
     Group<isServer> *group = (Group<isServer> *) timer->getData();
-
     group->forEach([](uWS::WebSocket<isServer> *webSocket) {
         if (webSocket->hasOutstandingPong) {
             webSocket->terminate();

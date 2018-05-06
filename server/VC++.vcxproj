@@ -27,6 +27,9 @@
     <PlatformToolset>v141</PlatformToolset>
     <ProjectName>uWS</ProjectName>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <SourcePath>/src; /src/uWS</SourcePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
@@ -34,33 +37,35 @@
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="src\Epoll.cpp" />
-    <ClCompile Include="src\Extensions.cpp" />
-    <ClCompile Include="src\Group.cpp" />
-    <ClCompile Include="src\HTTPSocket.cpp" />
-    <ClCompile Include="src\Hub.cpp" />
-    <ClCompile Include="src\Networking.cpp" />
-    <ClCompile Include="src\Node.cpp" />
-    <ClCompile Include="src\Socket.cpp" />
-    <ClCompile Include="src\WebSocket.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\uWS\Epoll.cpp" />
+    <ClCompile Include="src\uWS\Extensions.cpp" />
+    <ClCompile Include="src\uWS\Group.cpp" />
+    <ClCompile Include="src\uWS\HTTPSocket.cpp" />
+    <ClCompile Include="src\uWS\Hub.cpp" />
+    <ClCompile Include="src\uWS\Networking.cpp" />
+    <ClCompile Include="src\uWS\Node.cpp" />
+    <ClCompile Include="src\uWS\Room.cpp" />
+    <ClCompile Include="src\uWS\Socket.cpp" />
+    <ClCompile Include="src\uWS\WebSocket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
-    <ClInclude Include="src\Asio.h" />
-    <ClInclude Include="src\Backend.h" />
-    <ClInclude Include="src\Epoll.h" />
-    <ClInclude Include="src\Extensions.h" />
-    <ClInclude Include="src\Group.h" />
-    <ClInclude Include="src\HTTPSocket.h" />
-    <ClInclude Include="src\Hub.h" />
-    <ClInclude Include="src\Libuv.h" />
-    <ClInclude Include="src\Networking.h" />
-    <ClInclude Include="src\Node.h" />
-    <ClInclude Include="src\Socket.h" />
-    <ClInclude Include="src\uWS.h" />
-    <ClInclude Include="src\WebSocket.h" />
-    <ClInclude Include="src\WebSocketProtocol.h" />
+    <ClInclude Include="src\uWS\Asio.h" />
+    <ClInclude Include="src\uWS\Backend.h" />
+    <ClInclude Include="src\uWS\Epoll.h" />
+    <ClInclude Include="src\uWS\Extensions.h" />
+    <ClInclude Include="src\uWS\Group.h" />
+    <ClInclude Include="src\uWS\HTTPSocket.h" />
+    <ClInclude Include="src\uWS\Hub.h" />
+    <ClInclude Include="src\uWS\Libuv.h" />
+    <ClInclude Include="src\uWS\Networking.h" />
+    <ClInclude Include="src\uWS\Node.h" />
+    <ClInclude Include="src\uWS\Room.h" />
+    <ClInclude Include="src\uWS\Socket.h" />
+    <ClInclude Include="src\uWS\uWS.h" />
+    <ClInclude Include="src\uWS\WebSocket.h" />
+    <ClInclude Include="src\uWS\WebSocketProtocol.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="uWS.rc" />

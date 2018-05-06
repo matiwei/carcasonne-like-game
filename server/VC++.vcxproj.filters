@@ -1,38 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\Epoll.cpp" />
-    <ClCompile Include="src\Extensions.cpp" />
-    <ClCompile Include="src\Group.cpp" />
-    <ClCompile Include="src\HTTPSocket.cpp" />
-    <ClCompile Include="src\Hub.cpp" />
-    <ClCompile Include="src\Networking.cpp" />
-    <ClCompile Include="src\Node.cpp" />
-    <ClCompile Include="src\Socket.cpp" />
-    <ClCompile Include="src\WebSocket.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\uWS\Epoll.cpp">
+      <Filter>uWS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uWS\Extensions.cpp">
+      <Filter>uWS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uWS\Group.cpp">
+      <Filter>uWS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uWS\HTTPSocket.cpp">
+      <Filter>uWS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uWS\Hub.cpp">
+      <Filter>uWS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uWS\Networking.cpp">
+      <Filter>uWS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uWS\Node.cpp">
+      <Filter>uWS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uWS\Room.cpp">
+      <Filter>uWS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uWS\Socket.cpp">
+      <Filter>uWS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uWS\WebSocket.cpp">
+      <Filter>uWS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Asio.h" />
-    <ClInclude Include="src\Backend.h" />
-    <ClInclude Include="src\Epoll.h" />
-    <ClInclude Include="src\Extensions.h" />
-    <ClInclude Include="src\Group.h" />
-    <ClInclude Include="src\HTTPSocket.h" />
-    <ClInclude Include="src\Hub.h" />
-    <ClInclude Include="src\Libuv.h" />
-    <ClInclude Include="src\Networking.h" />
-    <ClInclude Include="src\Node.h" />
-    <ClInclude Include="src\Socket.h" />
-    <ClInclude Include="src\uWS.h" />
-    <ClInclude Include="src\WebSocket.h" />
-    <ClInclude Include="src\WebSocketProtocol.h" />
-    <ClInclude Include="resource.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="uWS.rc" />
+    <ClInclude Include="src\uWS\Asio.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uWS\Epoll.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uWS\Extensions.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uWS\Group.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uWS\HTTPSocket.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uWS\Hub.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uWS\Libuv.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uWS\Networking.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uWS\Node.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uWS\Room.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uWS\Socket.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uWS\uWS.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uWS\WebSocket.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uWS\WebSocketProtocol.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uWS\Backend.h">
+      <Filter>uWS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="uWS">
+      <UniqueIdentifier>{375389fc-c670-4276-a901-778798335767}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="uWS.rc">
+      <Filter>uWS</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
