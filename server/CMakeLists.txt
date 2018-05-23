@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 include_directories(.)
 include_directories(src/uWS)
+include_directories(${GTEST_SOURCE_DIR}/include $GTEST_SOURCE_DIR})
 
 add_executable(server
         src/uWS/Asio.h
@@ -35,4 +36,10 @@ add_executable(server
         src/main.cpp
         resource.h)
 
+add_executable(tests
+        src/sample.cc
+        src/sample.h
+        src/sample_unittest.cc)
+
 target_link_libraries(server -lssl -lcrypto -lz)
+target_link_libraries(tests gtest_main gtest)
