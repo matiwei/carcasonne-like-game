@@ -37,9 +37,9 @@ add_executable(server
         resource.h)
 
 add_executable(tests
-        src/sample.cc
-        src/sample.h
-        src/sample_unittest.cc)
+        Test/pch.cpp
+        Test/pch.h
+        Test/test.cpp)
 
 target_link_libraries(server -lssl -lcrypto -lz)
 target_link_libraries(tests gtest_main gtest)
