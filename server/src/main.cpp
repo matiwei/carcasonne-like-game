@@ -1,44 +1,60 @@
 #include "uWS/uWS.h"
-using namespace uWS;
-#include<iostream>
-using namespace std;
 #include<string>
+#include<iostream>
+#include<vector>
+#include"game/userDatabase.h"
+#include"game/game.h"
+#include"game/gameMap.h"
+#include"nlohmann/json.hpp"
+using nlohmann::json;
+using namespace uWS;
+using namespace std;
 int main() {
 	Hub h;
+	userDatabase userDatabase;
 	std::string response = "Hello!";
+	std::vector<game> games;
+	std::vector<uWS::Group<SERVER>*> gameGroups;
 
-	h.onMessage([&h](WebSocket<SERVER> *ws, char *message, size_t length, OpCode opCode) {
-		cout << ws->getUserData() << endl;
+	h.onMessage([&h, &userDatabase, &gameGroups, &games](WebSocket<SERVER> *ws, char *message, size_t length, OpCode opCode) {
 		if (!ws->getUserData()) {
-			ws->setUserData(message);
+			player playerVar = userDatabase.getPlayer(std::string(message).substr(0, length));
+			if (playerVar.id != 0) {
+				cout << "player " << playerVar.nick << " joined. " << playerVar.wonGames << " games won." << endl;
+				ws->setUserData((void*) new player(playerVar));
+
+				//EXAMPLE
+				gameMap gm = gameMap(10);
+				json o;
+				o = gameMap::toJson(gm);
+				cout << o << endl;
+			}
 		}
 		else {
-			cout << std::string((char*)ws->getUserData(),strlen((char*)ws->getUserData())) << " says: " << endl;
+			player* playerVar = (player*)ws->getUserData();
+			cout << playerVar->nick << " sends: " << std::string(message).substr(0, length) << endl;
+			size_t pos = std::string(message).find("createGame");
+			if (pos != std::string::npos) {
+				cout << "Tworzy siê nowa grupa" << endl;
+				games.push_back(game(100));
+				gameGroups.push_back(h.createGroup<uWS::SERVER>(uWS::PERMESSAGE_DEFLATE));
+				gameGroups.back()->onMessage([&h, &userDatabase, &gameGroups](WebSocket<SERVER> *ws, char *message, size_t length, OpCode opCode) {
+					cout << "Jestem w nowej grupie" << endl;
+				});
+				ws->transfer(gameGroups.back());
+			}
 		}
-		std::cout << "onMessage: " << std::string(message, length) << std::endl;
-		ws->send(message, length, opCode);
 	});
-	
+
 	h.onHttpRequest([&](HttpResponse *res, HttpRequest req, char *data, size_t length,
 		size_t remainingBytes) {
 		cout << "onHttpRequest" << endl;
 		res->end(response.data(), response.length());
 	});
-	int pings = 0, pongs = 0;
-	h.onPing([&pings](uWS::WebSocket<uWS::CLIENT> *ws, char *message, size_t length) {
-		//std::cout << ws->getAddress().address << ": PING" << std::endl;
-		pings++;
-	});
-	h.onPong([&pings, &pongs, &h](uWS::WebSocket<uWS::SERVER> *ws, char *message, size_t length) {
-		//std::cout << ws->getAddress().address << ": PONG" << std::endl;
-		pongs++;
-		if (pongs %1000 == 0) {
-			std::cout << "Count: " << pongs/1000 << std::endl;
-		}
-	});
+
+
 
 	if (h.listen(3000)) {
-		//h.connect("ws://localhost:3000/");
 		h.run();
 	}
 }
