@@ -31,6 +31,8 @@
 *.out
 *.app
 
+# IDE
+.idea
 
 # https://github.com/github/gitignore/blob/master/CMake.gitignore
 CMakeCache.txt
