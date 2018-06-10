@@ -1,5 +1,19 @@
+@font-face {
+    font-family: Supermercado;
+    src: url("./assets/SupermercadoOne-Regular.ttf");
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    margin: 0;
+    font-family: Supermercado, cursive;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+#root {
+    background-color: #FFF4E0;
 }

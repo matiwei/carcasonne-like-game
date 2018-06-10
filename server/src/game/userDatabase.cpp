@@ -30,9 +30,11 @@ userDatabase::~userDatabase()
 }
 
 player& userDatabase::getPlayer(std::string nick) {
-	for each (player player in players)
-	{
-		if ((player.nick).compare(nick)==0)
-			return player;
+	for (player &p : players) {
+		if ((p.nick).compare(nick) == 0) {
+			return p;
+		}
 	}
+
+	// TODO: Handle wrong user
 }

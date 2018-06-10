@@ -33,6 +33,15 @@ add_executable(server
         src/uWS/WebSocket.cpp
         src/uWS/WebSocket.h
         src/uWS/WebSocketProtocol.h
+        src/game/game.cpp
+        src/game/game.h
+        src/game/gameMap.cpp
+        src/game/gameMap.h
+        src/game/player.cpp
+        src/game/player.h
+        src/game/userDatabase.cpp
+        src/game/userDatabase.h
+        src/nlohmann/json.hpp
         src/main.cpp
         resource.h)
 
