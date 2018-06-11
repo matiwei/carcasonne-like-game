@@ -1,16 +1,20 @@
 import React, { PureComponent } from 'react';
 
 import LoginForm, { LOGIN_FORM_TYPES } from './LoginForm';
+import WebSocketHandler from './../WebSocketHandler/WebSocketHandler';
 
 import './Login.css';
 import sword from '../../assets/sword.png';
 
 class Login extends PureComponent {
     render() {
+        const handler = new WebSocketHandler();
+        handler.init();
+
         return (
             <div className="login">
                 <div className="login__header">
-                    <img src={sword} className="login__logo" />
+                    <img src={sword} className="login__logo" alt="sword" />
                     <h1 className="login__name">
                         Medieval Game
                     </h1>

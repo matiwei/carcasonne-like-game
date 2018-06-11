@@ -6,9 +6,11 @@
 #include"game/game.h"
 #include"game/gameMap.h"
 #include"nlohmann/json.hpp"
+
 using nlohmann::json;
 using namespace uWS;
 using namespace std;
+
 int main() {
 	Hub h;
 	userDatabase userDatabase;
@@ -35,7 +37,7 @@ int main() {
 			cout << playerVar->nick << " sends: " << std::string(message).substr(0, length) << endl;
 			size_t pos = std::string(message).find("createGame");
 			if (pos != std::string::npos) {
-				cout << "Tworzy siê nowa grupa" << endl;
+				cout << "Tworzy siÄ™ nowa grupa" << endl;
 				games.push_back(game(100));
 				gameGroups.push_back(h.createGroup<uWS::SERVER>(uWS::PERMESSAGE_DEFLATE));
 				gameGroups.back()->onMessage([&h, &userDatabase, &gameGroups](WebSocket<SERVER> *ws, char *message, size_t length, OpCode opCode) {
@@ -52,9 +54,7 @@ int main() {
 		res->end(response.data(), response.length());
 	});
 
-
-
-	if (h.listen(3000)) {
+	if (h.listen(4000)) {
 		h.run();
 	}
 }
