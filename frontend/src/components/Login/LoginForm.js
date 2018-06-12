@@ -23,7 +23,7 @@ class LoginForm extends PureComponent {
                     <LoginFormEntry name="password" required />
                     {
                         type === LOGIN_FORM_TYPES.SIGN_UP &&
-                        <LoginFormEntry name="repeat-password" />
+                        <LoginFormEntry name="repeatPassword" />
                     }
                 </div>
                 <button className="login-form__button" type="submit">
@@ -42,7 +42,9 @@ class LoginForm extends PureComponent {
             if (repeatPassword === password) {
                 handler.doSend({ type: 'signUp', arg1: username.value, arg2: password.value });
             } else {
+                // TODO: display errors
                 alert('Passwords do not match');
+                return;
             }
         } else {
             handler.doSend({ type: 'signIn', arg1: username.value, arg2: password.value });

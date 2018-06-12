@@ -7,18 +7,33 @@
 .lobby__header {
     background-color: #740F13;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 20px;
     font-family: Supermercado, cursive;
     font-size: 25px;
 }
 
-.lobby__name {
+.lobby__logo {
+    display: flex;
+}
+
+.lobby__username {
+    color: #FFF4E0;
+    padding: 0 20px;
+}
+
+.lobby__user {
+    display: flex;
+    align-items: center;
+}
+
+.lobby__logo-name {
     color: #FFF4E0;
     margin: 0 15px;
 }
 
-.lobby__logo {
+.lobby__logo-img {
     height: 50px;
     margin: 5px;
 }

@@ -15,8 +15,8 @@ class LobbyGames extends PureComponent {
                 <table className="lobby-games__games">
                     <thead className="lobby-games__games-header">
                     <tr>
-                        <th>Name</th>
-                        <th>Duration</th>
+                        <th width="20%">Name</th>
+                        <th width="20%">Duration</th>
                         <th>Players</th>
                     </tr>
                     </thead>

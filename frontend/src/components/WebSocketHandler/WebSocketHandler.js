@@ -16,9 +16,7 @@ class WebSocketHandler {
         this.websocket.onerror = (e) => this.onError(e);
     };
 
-    onOpen = () => {
-        console.info('Connected to web socket.');
-    }
+    onOpen = () => console.info('Connected to web socket.');
 
     onClose = () => console.info('Disconnected from web socket');
 
@@ -27,9 +25,7 @@ class WebSocketHandler {
     onError = (e) => console.error('Web socket error: ', e.data);
 
     doSend = (message) => {
-        const serialized = decodeURI(encodeURI(JSON.stringify(message)));
-        console.info('Message sent:', message);
-        console.log('Serialized:', serialized);
+        const serialized = decodeURI(encodeURI(JSON.stringify(message))).toString();
         this.websocket.send(serialized);
     };
 }

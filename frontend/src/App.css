@@ -1,4 +1,5 @@
 .login-form__button,
+.lobby__button--logout,
 .lobby-games__button,
 .lobby-chat__button {
     padding: 10px 20px;
@@ -42,4 +43,6 @@
 .lobby-chat__messages {
     background-color: white;
     border-radius: 2px;
+    padding: 10px 20px;
+    text-align: left;
 }

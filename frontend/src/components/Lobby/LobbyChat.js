@@ -14,8 +14,8 @@ class LobbyChat extends PureComponent {
                 <table className="lobby-chat__messages">
                     <thead className="lobby-chat__meassages-header">
                     <tr>
-                        <th>Time</th>
-                        <th>Player</th>
+                        <th width="10%">Time</th>
+                        <th width="15%">Player</th>
                         <th>Message</th>
                     </tr>
                     </thead>
