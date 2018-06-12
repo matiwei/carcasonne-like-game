@@ -20,8 +20,8 @@ class Login extends PureComponent {
                     </h1>
                 </div>
                 <div className="login__forms-wrapper">
-                    <LoginForm type={LOGIN_FORM_TYPES.SIGN_UP} />
-                    <LoginForm type={LOGIN_FORM_TYPES.SIGN_IN} />
+                    <LoginForm type={LOGIN_FORM_TYPES.SIGN_UP} handler={handler} />
+                    <LoginForm type={LOGIN_FORM_TYPES.SIGN_IN} handler={handler} />
                 </div>
             </div>
         );

@@ -7,7 +7,7 @@
 #include"game/gameMap.h"
 #include"nlohmann/json.hpp"
 
-using nlohmann::json;
+using json = nlohmann::json;
 using namespace uWS;
 using namespace std;
 
@@ -18,9 +18,12 @@ int main() {
 	std::vector<game> games;
 	std::vector<uWS::Group<SERVER>*> gameGroups;
 
-	h.onMessage([&h, &userDatabase, &gameGroups, &games](WebSocket<SERVER> *ws, char *message, size_t length, OpCode opCode) {
+	h.onMessage([&h, &userDatabase, &gameGroups, &games](WebSocket<SERVER> *ws, char* message, size_t length, OpCode opCode) {
+	    string data = std::string(message).substr(0, length);
+		json deserialized = json::parse(data);
+
 		if (!ws->getUserData()) {
-			player playerVar = userDatabase.getPlayer(std::string(message).substr(0, length));
+			player playerVar = userDatabase.getPlayer(deserialized["arg1"]);
 			if (playerVar.id != 0) {
 				cout << "player " << playerVar.nick << " joined. " << playerVar.wonGames << " games won." << endl;
 				ws->setUserData((void*) new player(playerVar));
@@ -34,7 +37,9 @@ int main() {
 		}
 		else {
 			player* playerVar = (player*)ws->getUserData();
-			cout << playerVar->nick << " sends: " << std::string(message).substr(0, length) << endl;
+			cout << playerVar->nick << " sends: " << deserialized["arg1"] << endl;
+
+			// TODO: adapt to new message
 			size_t pos = std::string(message).find("createGame");
 			if (pos != std::string::npos) {
 				cout << "Tworzy się nowa grupa" << endl;
@@ -48,8 +53,7 @@ int main() {
 		}
 	});
 
-	h.onHttpRequest([&](HttpResponse *res, HttpRequest req, char *data, size_t length,
-		size_t remainingBytes) {
+	h.onHttpRequest([&](HttpResponse *res, HttpRequest req, char *data, size_t length, size_t remainingBytes) {
 		cout << "onHttpRequest" << endl;
 		res->end(response.data(), response.length());
 	});

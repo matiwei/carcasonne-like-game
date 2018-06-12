@@ -5,23 +5,22 @@ import _ from 'lodash';
 import LoginFormEntry from './LoginFormEntry';
 
 import './LoginForm.css';
-
 export const LOGIN_FORM_TYPES = { SIGN_UP: 'sign up', SIGN_IN: 'sign in' };
 
 class LoginForm extends PureComponent {
     render() {
-        const { type } = this.props;
+        const { type, handler } = this.props;
 
         return (
-            <form className="login-form" onSubmit={(e) => this.onFormSubmit(e)}>
+            <form className="login-form" onSubmit={(e) => this.onFormSubmit(e, handler)}>
                 <div className="login-form__header">
                     <h2 className="login-form__header-title">
                         {_.capitalize(type)}
                     </h2>
                 </div>
                 <div className="login-form__entries">
-                    <LoginFormEntry name="username" />
-                    <LoginFormEntry name="password" />
+                    <LoginFormEntry name="username" required />
+                    <LoginFormEntry name="password" required />
                     {
                         type === LOGIN_FORM_TYPES.SIGN_UP &&
                         <LoginFormEntry name="repeat-password" />
@@ -34,11 +33,22 @@ class LoginForm extends PureComponent {
         );
     }
 
-    onFormSubmit = (e) => {
+    onFormSubmit = (e, handler) => {
         e.preventDefault();
-        this.props.history.push('/lobby');
 
-        console.info('Form submitted');
+        const { target: { username, password, repeatPassword } } = e;
+
+        if (repeatPassword) {
+            if (repeatPassword === password) {
+                handler.doSend({ type: 'signUp', arg1: username.value, arg2: password.value });
+            } else {
+                alert('Passwords do not match');
+            }
+        } else {
+            handler.doSend({ type: 'signIn', arg1: username.value, arg2: password.value });
+        }
+
+        this.props.history.push('/lobby');
     }
 }
 

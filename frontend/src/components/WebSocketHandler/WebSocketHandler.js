@@ -18,20 +18,19 @@ class WebSocketHandler {
 
     onOpen = () => {
         console.info('Connected to web socket.');
-        this.doSend('mweigle');
-    };
+    }
 
     onClose = () => console.info('Disconnected from web socket');
 
-    onMessage = (e) => {
-        console.info('Message received: ', e.data);
-    };
+    onMessage = (e) => console.info('Message received: ', e.data);
 
     onError = (e) => console.error('Web socket error: ', e.data);
 
     doSend = (message) => {
+        const serialized = decodeURI(encodeURI(JSON.stringify(message)));
         console.info('Message sent:', message);
-        this.websocket.send(message);
+        console.log('Serialized:', serialized);
+        this.websocket.send(serialized);
     };
 }
 
