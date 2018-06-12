@@ -1,0 +1,20 @@
+.lobby-games__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lobby-games__games-header {
+    border-bottom: 1px solid #FEBF26;
+}
+
+.lobby-games__button {
+    align-self: center;
+}
+
+.lobby-games {
+    flex-grow: 2;
+    border-right: 1px solid #740F13;
+    padding-right: 50px;
+    display: flex;
+    flex-direction: column;
+}

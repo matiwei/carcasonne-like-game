@@ -1,0 +1,19 @@
+.lobby-stats__header {
+    font-family: Supermercado, cursive;
+    font-size: 25px;
+}
+
+.lobby-stats__stats-entry {
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.lobby-stats__stats-entry--value {
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+.lobby-stats {
+    flex-grow: 1;
+    padding-left: 50px;
+}

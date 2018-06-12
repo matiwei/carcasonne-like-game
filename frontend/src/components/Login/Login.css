@@ -11,15 +11,17 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    font-family: Supermercado, cursive;
 }
 
 .login__name {
     color: #FFF4E0;
-    margin: 0
+    margin: 0;
+    font-size: 50px;
 }
 
 .login__logo {
-    height: 50px;
+    height: 70px;
     margin: 5px;
 }
 

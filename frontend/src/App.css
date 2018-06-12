@@ -1,0 +1,45 @@
+.login-form__button,
+.lobby-games__button,
+.lobby-chat__button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FEBF26;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: Lato, monospace;
+    font-weight: bold;
+    color: #222;
+    font-size: 20px;
+}
+
+.login-form__header-title,
+.lobby-games__header-title,
+.lobby-stats__header-title,
+.lobby-chat__header-title {
+    font-size: 40px;
+    font-family: Supermercado, cursive;
+}
+
+.login-form__input,
+.lobby-chat__input {
+    width: 300px;
+    border-radius: 2px;
+    border: none;
+    border-bottom: 1px solid #FEBF26;
+    padding: 5px 10px;
+    font-size: 22px;
+    font-family: Lato, monospace;
+    resize: none;
+}
+
+.login-form__input:focus,
+.lobby-chat__input:focus {
+    outline: none;
+}
+
+.lobby-games__games,
+.lobby-chat__messages {
+    background-color: white;
+    border-radius: 2px;
+}

@@ -1,0 +1,38 @@
+.lobby {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.lobby__header {
+    background-color: #740F13;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-family: Supermercado, cursive;
+    font-size: 25px;
+}
+
+.lobby__name {
+    color: #FFF4E0;
+    margin: 0 15px;
+}
+
+.lobby__logo {
+    height: 50px;
+    margin: 5px;
+}
+
+.lobby__vertical-wrapper {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+}
+
+.lobby__horizontal-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-around;
+    padding: 50px;
+}

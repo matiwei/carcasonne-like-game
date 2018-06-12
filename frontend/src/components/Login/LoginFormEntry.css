@@ -1,0 +1,11 @@
+.login-form__entry {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+.login-form__label {
+    margin: 5px;
+    font-size: 18px;
+    color: #222;
+}

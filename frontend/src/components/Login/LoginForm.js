@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { withRouter } from 'react-router-dom';
 import _ from 'lodash';
 
 import LoginFormEntry from './LoginFormEntry';
@@ -12,24 +13,18 @@ class LoginForm extends PureComponent {
         const { type } = this.props;
 
         return (
-            <form className="login-form">
+            <form className="login-form" onSubmit={(e) => this.onFormSubmit(e)}>
                 <div className="login-form__header">
                     <h2 className="login-form__header-title">
                         {_.capitalize(type)}
                     </h2>
                 </div>
                 <div className="login-form__entries">
-                    <LoginFormEntry>
-                        Username
-                    </LoginFormEntry>
-                    <LoginFormEntry>
-                        Password
-                    </LoginFormEntry>
+                    <LoginFormEntry name="username" />
+                    <LoginFormEntry name="password" />
                     {
                         type === LOGIN_FORM_TYPES.SIGN_UP &&
-                        <LoginFormEntry>
-                            Repeat password
-                        </LoginFormEntry>
+                        <LoginFormEntry name="repeat-password" />
                     }
                 </div>
                 <button className="login-form__button" type="submit">
@@ -38,6 +33,13 @@ class LoginForm extends PureComponent {
             </form>
         );
     }
+
+    onFormSubmit = (e) => {
+        e.preventDefault();
+        this.props.history.push('/lobby');
+
+        console.info('Form submitted');
+    }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);

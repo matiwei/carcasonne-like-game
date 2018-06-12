@@ -1,0 +1,23 @@
+.lobby-chat {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.lobby-chat__send {
+    display: flex;
+}
+
+.lobby-chat__button {
+    align-self: center;
+    margin-left: 20px;
+}
+
+.lobby-chat__input {
+    flex-grow: 1;
+}
+
+.lobby-chat__messages {
+    flex-grow: 1;
+    margin-bottom: 20px;
+}

@@ -3,9 +3,14 @@
     src: url("./assets/SupermercadoOne-Regular.ttf");
 }
 
+@font-face {
+    font-family: Lato;
+    src: url("./assets/Lato-Regular.ttf");
+}
+
 body {
     margin: 0;
-    font-family: Supermercado, cursive;
+    font-family: Lato, sans-serif;
 }
 
 html,
