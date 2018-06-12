@@ -1,5 +1,7 @@
 #pragma once
 #include<string> 
+#include"../nlohmann/json.hpp"
+using nlohmann::json;
 class player
 {
 public:
@@ -12,5 +14,6 @@ public:
 	int averagePoints;
 	player();
 	~player();
+	const json player::toJson();
 };
 

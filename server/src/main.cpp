@@ -27,7 +27,7 @@ int main() {
 			if (playerVar.id != 0) {
 				cout << "player " << playerVar.nick << " joined. " << playerVar.wonGames << " games won." << endl;
 				ws->setUserData((void*) new player(playerVar));
-
+				ws->send(std::string(playerVar.toJson().value).c_str, uWS::TEXT);
 				//EXAMPLE
 				gameMap gm = gameMap(10);
 				json o;
