@@ -4,6 +4,10 @@ import './LobbyStats.css';
 
 class LobbyStats extends PureComponent {
     render() {
+        const { messages } = this.props;
+        const message = messages.find((message) => message.nick);
+        const stats = message ? message : {};
+
         return (
             <div className="lobby-stats">
                 <div className="lobby-stats__header">
@@ -15,19 +19,19 @@ class LobbyStats extends PureComponent {
                     <h3 className="lobby-stats__stats-entry">
                         Played games:
                         <span className="lobby-stats__stats-entry--value">
-                            123
+                            { stats.games }
                         </span>
                     </h3>
                     <h3 className="lobby-stats__stats-entry">
                         Approx. turn points:
                         <span className="lobby-stats__stats-entry--value">
-                            1
+                            { stats.averagePoints }
                         </span>
                     </h3>
                     <h3 className="lobby-stats__stats-entry">
                         Won:
                         <span className="lobby-stats__stats-entry--value">
-                            2
+                            { stats.wonGames }
                         </span>
                     </h3>
                 </div>

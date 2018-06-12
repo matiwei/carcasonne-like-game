@@ -9,6 +9,8 @@ import sword from '../../assets/sword.png';
 
 class Lobby extends PureComponent {
     render() {
+        const { handler, messages } = this.props;
+
         return (
             <div className="lobby">
                 <div className="lobby__header">
@@ -30,9 +32,9 @@ class Lobby extends PureComponent {
                 <div className="lobby__horizontal-wrapper">
                     <div className="lobby__vertical-wrapper">
                         <LobbyGames />
-                        <LobbyStats />
+                        <LobbyStats messages={messages} />
                     </div>
-                    <LobbyChat />
+                    <LobbyChat handler={handler} messages={messages} />
                 </div>
             </div>
         );

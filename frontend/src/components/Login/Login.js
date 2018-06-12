@@ -1,15 +1,13 @@
 import React, { PureComponent } from 'react';
 
 import LoginForm, { LOGIN_FORM_TYPES } from './LoginForm';
-import WebSocketHandler from './../WebSocketHandler/WebSocketHandler';
 
 import './Login.css';
 import sword from '../../assets/sword.png';
 
 class Login extends PureComponent {
     render() {
-        const handler = new WebSocketHandler();
-        handler.init();
+        const { handler } = this.props;
 
         return (
             <div className="login">

@@ -1,11 +1,12 @@
 let websocket;
+let messages;
 
 const SERVER_URL = "ws://localhost:4000";
 
 // Todo: Remove console.info if not needed
 class WebSocketHandler {
-    static get websocket() {
-        return websocket;
+    static get messages() {
+        return this.messages;
     }
 
     init = () => {
@@ -14,13 +15,14 @@ class WebSocketHandler {
         this.websocket.onclose = () => this.onClose();
         this.websocket.onmessage = (e) => this.onMessage(e);
         this.websocket.onerror = (e) => this.onError(e);
+        this.messages = [];
     };
 
     onOpen = () => console.info('Connected to web socket.');
 
     onClose = () => console.info('Disconnected from web socket');
 
-    onMessage = (e) => console.info('Message received: ', e.data);
+    onMessage = (e) => this.messages.push(JSON.parse(e.data));
 
     onError = (e) => console.error('Web socket error: ', e.data);
 

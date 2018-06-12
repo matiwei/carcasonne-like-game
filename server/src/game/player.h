@@ -14,6 +14,6 @@ public:
 	int averagePoints;
 	player();
 	~player();
-	const json player::toJson();
+	const json toJson();
 };
 
