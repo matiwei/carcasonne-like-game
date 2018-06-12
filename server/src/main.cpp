@@ -17,8 +17,8 @@ int main() {
 	std::string response = "Hello!";
 	std::vector<game> games;
 	std::vector<uWS::Group<SERVER>*> gameGroups;
-
-	h.onMessage([&h, &userDatabase, &gameGroups, &games](WebSocket<SERVER> *ws, char* message, size_t length, OpCode opCode) {
+	std::vector<string> conversation;
+	h.onMessage([&h, &userDatabase, &gameGroups, &games, &conversation](WebSocket<SERVER> *ws, char* message, size_t length, OpCode opCode) {
 	    string data = std::string(message).substr(0, length);
 		json deserialized = json::parse(data);
 
@@ -40,15 +40,18 @@ int main() {
 		else {
 			player* playerVar = (player*)ws->getUserData();
 			cout << playerVar->nick << " sends: " << deserialized["arg1"] << endl;
-
-			// TODO: adapt to new message
-			size_t pos = std::string(message).find("createGame");
-			if (pos != std::string::npos) {
-				cout << "Tworzy się nowa grupa" << endl;
+			if (deserialized["type"] == "sendMessage") {
+				conversation.push_back(playerVar->nick + string(" sends: ") + deserialized["arg1"].dump());
+				json conversationJson = conversation;
+				h.getDefaultGroup<uWS::SERVER>().broadcast(conversationJson.dump().c_str(), conversationJson.dump().length(), uWS::OpCode::TEXT);
+			}
+			if (deserialized["type"]=="createGame") {
+				cout << "Tworzy sie nowa gra: " << deserialized["arg1"] << endl;
 				games.push_back(game(100));
-				gameGroups.push_back(h.createGroup<uWS::SERVER>(uWS::PERMESSAGE_DEFLATE));
+				gameGroups.push_back(h.createGroup<uWS::SERVER>());
+				gameGroups.back()->setUserData(gameGroups.back());
 				gameGroups.back()->onMessage([&h, &userDatabase, &gameGroups](WebSocket<SERVER> *ws, char *message, size_t length, OpCode opCode) {
-					cout << "Jestem w nowej grupie" << endl;
+					ws->send("jestem w grze", 14, uWS::TEXT);
 				});
 				ws->transfer(gameGroups.back());
 			}
